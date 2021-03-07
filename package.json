@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@emotion/babel-plugin": "^11.2.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.1",
     "autoprefixer": "^10.2.5",
@@ -31,6 +32,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
