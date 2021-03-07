@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { SiReact, SiWebpack, SiTypescript } from 'react-icons/si'
-
 import { css, jsx } from '@emotion/react'
+
+import { SiReact, SiWebpack, SiTypescript } from 'react-icons/si'
+import { Container } from './componets/common'
 
 import './styles.scss'
 
@@ -14,7 +15,7 @@ const iconsStyle = css`
 
 function App() {
   return (
-    <div>
+    <Container>
       <div className="icons" css={iconsStyle}>
         <SiWebpack />
         <SiReact />
@@ -22,7 +23,7 @@ function App() {
         <span>👩‍🎤</span>
       </div>
       <h1>Welcome</h1>
-    </div>
+    </Container>
   )
 }
 
