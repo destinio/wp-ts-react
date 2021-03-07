@@ -1,9 +1,10 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js'
@@ -14,12 +15,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', "@babel/preset-typescript"]
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
           }
         }
       },
@@ -37,6 +38,14 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './build',
+    open: 'Google Chrome',
+    port: 9000,
+    watchContentBase: true,
+    clientLogLevel: 'debug',
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -44,5 +53,8 @@ module.exports = {
       template: './src/index.html'
     }),
     new MiniCssExtractPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: 'public' }],
+    }),
   ],
 }
