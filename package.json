@@ -9,6 +9,9 @@
     "watch": "webpack --watch --config webpack.dev.js",
     "start": "webpack serve --config webpack.dev.js"
   },
+  "browserslist": [
+    "last 2 version"
+  ],
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.9",
