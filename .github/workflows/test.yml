@@ -9,6 +9,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v2
+      - name: 🧙 Install apps with Yarn
+        run: 'yarn'
       - name: 🛠 Build App
         run: 'yarn build:prod'
       - run: 'ls -al'
