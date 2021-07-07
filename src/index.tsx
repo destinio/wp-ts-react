@@ -1,22 +1,16 @@
-/** @jsx jsx */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { css, jsx } from '@emotion/react'
+import { Global } from '@emotion/react'
 
 import { SiReact, SiWebpack, SiTypescript } from 'react-icons/si'
 import { Container } from './componets/common'
-
-import './styles.scss'
-
-const iconsStyle = css`
-  display: flex;
-  font-size: 2rem;
-`
+import { GlobalStyles } from './GlobalStyles'
 
 function App() {
   return (
     <Container>
-      <div className="icons" css={iconsStyle}>
+      <Global styles={GlobalStyles} />
+      <div>
         <SiWebpack />
         <SiReact />
         <SiTypescript />
