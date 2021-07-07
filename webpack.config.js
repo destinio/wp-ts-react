@@ -7,10 +7,11 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    publicPath: '',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', 'jsx', '.json'],
   },
   module: {
     rules: [
@@ -21,37 +22,23 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-            plugins: ["@emotion"]
-          }
-        }
+            plugins: ['@emotion'],
+          },
+        },
       },
       {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader",
-          "postcss-loader"
-        ]
-      }
-    ]
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './build',
-    open: 'Google Chrome',
-    port: 9000,
-    watchContentBase: true,
-    clientLogLevel: 'debug',
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 10000,
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin(),
     new CopyPlugin({
